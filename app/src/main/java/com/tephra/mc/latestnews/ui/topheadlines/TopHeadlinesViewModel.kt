@@ -8,9 +8,13 @@ import javax.inject.Inject
 
 class TopHeadlinesViewModel @Inject constructor(private val newsRepository: NewsRepo): ViewModel() {
 
-    val news: LiveData<List<Article>> = newsRepository.getTopHeadlines()
+    private val news: LiveData<List<Article>> = loadTopHeadlines()
 
     fun getTopHeadlines():LiveData<List<Article>> {
+        return news
+    }
+
+    fun loadTopHeadlines() :LiveData<List<Article>> {
         return newsRepository.getTopHeadlines()
     }
 

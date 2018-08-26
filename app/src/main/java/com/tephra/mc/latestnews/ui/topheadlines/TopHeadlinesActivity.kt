@@ -31,7 +31,7 @@ class TopHeadlinesActivity : AppCompatActivity() {
         setContentView(R.layout.top_headlines_activity)
         setupViewModel()
         initViews()
-        getTopHeadlines()
+        loadTopHeadlines()
 
     }
 
@@ -39,7 +39,7 @@ class TopHeadlinesActivity : AppCompatActivity() {
 
         topHeadlinesViewModel = ViewModelProviders.of(this, viewModelFactory)[TopHeadlinesViewModel::class.java]
 
-        topHeadlinesViewModel.news.observe(this, Observer<List<Article>> {
+        topHeadlinesViewModel.getTopHeadlines().observe(this, Observer<List<Article>> {
             updateList(it!!)
             if (swipeRefreshLayout.isRefreshing) {
                 swipeRefreshLayout.isRefreshing = false
@@ -52,11 +52,11 @@ class TopHeadlinesActivity : AppCompatActivity() {
         listView = recycler_list
         listView.layoutManager = LinearLayoutManager(this)
         swipeRefreshLayout = refreshLayoutTopHeadlines
-        swipeRefreshLayout.setOnRefreshListener { getTopHeadlines() }
+        swipeRefreshLayout.setOnRefreshListener { loadTopHeadlines() }
     }
 
-    private fun getTopHeadlines() {
-        topHeadlinesViewModel.getTopHeadlines()
+    private fun loadTopHeadlines() {
+        topHeadlinesViewModel.loadTopHeadlines()
     }
 
     private fun updateList(articles: List<Article>) {
