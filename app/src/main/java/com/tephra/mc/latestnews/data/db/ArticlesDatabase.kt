@@ -10,7 +10,7 @@ import com.tephra.mc.latestnews.data.model.Article
  */
 @Database(entities = [Article::class], version = 1)
 @TypeConverters(DateConverter::class)
-abstract class ArticlesDataBase : RoomDatabase() {
+abstract class ArticlesDatabase : RoomDatabase() {
 
     abstract fun articleDao(): ArticleDao
 
