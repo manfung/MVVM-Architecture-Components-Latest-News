@@ -55,13 +55,12 @@ class TopHeadlinesViewModelTest {
         val articles = mutableListOf<Article>()
         for (i in 1..articlesSize) {
             articles.add (Article(
-                    i.toLong(),
-                    author + articlesSize,
-                    title + articlesSize,
-                    description + articlesSize,
-                    url,
-                    urlImage,
-                    date
+                    author = author + i,
+                    title = title + i,
+                    description = description + i,
+                    url = url,
+                    urlToImage = urlImage,
+                    publishedAt = date
             ) )
         }
 

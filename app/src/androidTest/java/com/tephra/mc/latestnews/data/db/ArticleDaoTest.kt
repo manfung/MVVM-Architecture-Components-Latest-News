@@ -36,28 +36,25 @@ class ArticleDaoTest {
     @Test
     fun testInsertedAndRetrievedArticlesMatch() {
 
-        val id:Long = 1
         val author = "Author 1"
-        val title = "title"
+        val title = "title 1"
         val description = "description 1"
         val url = "url"
         val urlImage = "imageUrl"
         var date = Date()
 
         articleDao.insert(Article(
-                id,
-                author,
-                title,
-                description,
-                url,
-                urlImage,
-                date
+                author = author,
+                title = title,
+                description = description,
+                url = url,
+                urlToImage = urlImage,
+                publishedAt = date
                 ))
 
         val articleWrappedInLiveData = articleDao.getAll()
         val articleFromDb = articleWrappedInLiveData.getValueBlocking()
         assertEquals(articleFromDb!!.size, 1)
-        assertEquals(articleFromDb!![0].id, id)
         assertEquals(articleFromDb!![0].author, author)
         assertEquals(articleFromDb!![0].title, title)
         assertEquals(articleFromDb!![0].description, description)
@@ -90,9 +87,9 @@ class ArticleDaoTest {
 
     private fun getArticles(articlesSize: Int): List<Article> {
 
-        val author = "Author 1"
+        val author = "Author"
         val title = "title"
-        val description = "description 1"
+        val description = "description"
         val url = "url"
         val urlImage = "imageUrl"
         var date = Date()
@@ -100,13 +97,12 @@ class ArticleDaoTest {
         val articles = mutableListOf<Article>()
         for (i in 1..articlesSize) {
             articles.add (Article(
-                    i.toLong(),
-                    author,
-                    title,
-                    description,
-                    url,
-                    urlImage,
-                    date
+                    author = author + i,
+                    title = title + i,
+                    description = description + i,
+                    url = url + i,
+                    urlToImage = urlImage,
+                    publishedAt = date
             ) )
         }
 
