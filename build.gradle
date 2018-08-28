@@ -13,8 +13,8 @@ buildscript {
     ext.runner_version = '1.1.0-alpha3'
     ext.espresso_version = '3.1.0-alpha3'
     ext.room_version = "1.1.1"
-
-
+    ext.mockito_version = "2.21.0"
+    ext.mockitokotlin2_version = "2.0.0-RC1"
 
     repositories {
         google()
