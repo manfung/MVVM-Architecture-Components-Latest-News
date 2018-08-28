@@ -31,7 +31,6 @@ class TopHeadlinesActivity : AppCompatActivity() {
         setContentView(R.layout.top_headlines_activity)
         setupViewModel()
         initViews()
-        loadTopHeadlines()
 
     }
 
